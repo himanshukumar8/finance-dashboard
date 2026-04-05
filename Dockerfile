@@ -1,14 +1,21 @@
-# Use lightweight Java image
-FROM eclipse-temurin:17-jdk-alpine
+# Stage 1: Build JAR using Maven
+FROM maven:3.9.9-eclipse-temurin-17 AS build
 
-# Set working directory
 WORKDIR /app
 
-# Copy jar file
-COPY target/*.jar app.jar
+COPY pom.xml .
+COPY src ./src
 
-# Expose port
+RUN mvn clean package -DskipTests
+
+
+# Stage 2: Run the application
+FROM eclipse-temurin:17-jdk-alpine
+
+WORKDIR /app
+
+COPY --from=build /app/target/*.jar app.jar
+
 EXPOSE 8080
 
-# Run application
 ENTRYPOINT ["java","-jar","/app/app.jar"]
