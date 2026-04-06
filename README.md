@@ -18,6 +18,12 @@ It supports:
 The system is designed using a layered architecture to demonstrate clean backend engineering practices.
 
 ---
+## Live Demo
+```
+https://finance-dashboard-pge1.onrender.com/swagger-ui/index.html
+
+```
+---
 
 ## Tech Stack
 
@@ -436,7 +442,7 @@ Swagger UI
 Available at:
 
 ```
-http://localhost:8080/swagger-ui/index.html
+https://finance-dashboard-pge1.onrender.com/swagger-ui/index.html
 ```
 
 ---
